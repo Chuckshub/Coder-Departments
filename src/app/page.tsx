@@ -13,18 +13,18 @@ import {
   Skeleton
 } from "@nextui-org/react";
 import { SearchIcon } from "@nextui-org/shared-icons";
-import { ForecastItem, FilterState, SortConfig, SourceType } from "@/types/forecast";
+import { VendorItem, FilterState, SortConfig, SourceType } from "@/types/forecast";
 import {
-  filterForecastItems,
-  sortForecastItems,
+  filterVendorItems,
+  sortVendorItems,
   getUniqueValues,
   groupByDepartment
 } from "@/lib/utils";
-import { ForecastTable } from "@/components/tables/ForecastTable";
+import { VendorTable } from "@/components/tables/VendorTable";
 import { DepartmentGroupView } from "@/components/tables/DepartmentGroupView";
 
 export default function Home() {
-  const [data, setData] = useState<ForecastItem[]>([]);
+  const [data, setData] = useState<VendorItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<SourceType>("tooling");
   const [groupByDept, setGroupByDept] = useState(false);
@@ -35,19 +35,19 @@ export default function Home() {
     subdepartment: ""
   });
   const [sortConfig, setSortConfig] = useState<SortConfig>({
-    key: "fyTotal",
-    direction: "desc"
+    key: "vendor",
+    direction: "asc"
   });
 
   // Load data
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch('/forecast.json');
+        const response = await fetch('/vendors.json');
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {
-        console.error('Error loading forecast data:', error);
+        console.error('Error loading vendor data:', error);
       } finally {
         setLoading(false);
       }
@@ -63,7 +63,7 @@ export default function Home() {
 
   // Apply filters and sorting
   const filteredData = useMemo(() => {
-    let filtered = filterForecastItems(
+    let filtered = filterVendorItems(
       tabData,
       filters.search,
       filters.department,
@@ -71,7 +71,7 @@ export default function Home() {
       filters.subdepartment
     );
     
-    return sortForecastItems(filtered, sortConfig.key, sortConfig.direction);
+    return sortVendorItems(filtered, sortConfig.key, sortConfig.direction);
   }, [tabData, filters, sortConfig]);
 
   // Get unique values for filter dropdowns
@@ -88,7 +88,7 @@ export default function Home() {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
 
-  const handleSort = (key: keyof ForecastItem | 'fyTotal') => {
+  const handleSort = (key: keyof VendorItem) => {
     setSortConfig(prev => ({
       key,
       direction: prev.key === key && prev.direction === 'desc' ? 'asc' : 'desc'
@@ -125,10 +125,10 @@ export default function Home() {
         {/* Header */}
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-bold text-black">
-            FP&A Department Forecast Tool
+            Vendor Department Lookup Tool
           </h1>
           <p className="text-black">
-            Vendor and account forecasting for AP teams
+            Find the correct department and account code for any vendor
           </p>
         </div>
 
@@ -225,7 +225,7 @@ export default function Home() {
               </Switch>
               
               <div className="text-sm text-black">
-                {filteredData.length} items found
+                {filteredData.length} vendors found
               </div>
             </div>
           </CardBody>
@@ -259,7 +259,7 @@ export default function Home() {
               sortConfig={sortConfig}
             />
           ) : (
-            <ForecastTable
+            <VendorTable
               data={filteredData}
               onSort={handleSort}
               sortConfig={sortConfig}

@@ -1,16 +1,4 @@
-import { ForecastItem, DepartmentSubtotal, MonthlyData } from '@/types/forecast';
-
-/**
- * Format currency values to USD locale string
- */
-export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
+import { VendorItem, DepartmentGroup } from '@/types/forecast';
 
 /**
  * Get unique values from an array of objects for a specific key
@@ -21,15 +9,15 @@ export function getUniqueValues<T, K extends keyof T>(items: T[], key: K): T[K][
 }
 
 /**
- * Filter forecast items based on search and filter criteria
+ * Filter vendor items based on search and filter criteria
  */
-export function filterForecastItems(
-  items: ForecastItem[],
+export function filterVendorItems(
+  items: VendorItem[],
   search: string,
   department: string,
   account: string,
   subdepartment: string
-): ForecastItem[] {
+): VendorItem[] {
   return items.filter(item => {
     const searchMatch = !search || 
       item.vendor.toLowerCase().includes(search.toLowerCase()) ||
@@ -46,24 +34,16 @@ export function filterForecastItems(
 }
 
 /**
- * Sort forecast items based on key and direction
+ * Sort vendor items based on key and direction
  */
-export function sortForecastItems(
-  items: ForecastItem[],
-  key: keyof ForecastItem | 'fyTotal',
+export function sortVendorItems(
+  items: VendorItem[],
+  key: keyof VendorItem,
   direction: 'asc' | 'desc'
-): ForecastItem[] {
+): VendorItem[] {
   return [...items].sort((a, b) => {
-    let aValue: any;
-    let bValue: any;
-    
-    if (key === 'fyTotal') {
-      aValue = a.fyTotal;
-      bValue = b.fyTotal;
-    } else {
-      aValue = a[key];
-      bValue = b[key];
-    }
+    let aValue: any = a[key];
+    let bValue: any = b[key];
     
     if (typeof aValue === 'string' && typeof bValue === 'string') {
       aValue = aValue.toLowerCase();
@@ -77,54 +57,22 @@ export function sortForecastItems(
 }
 
 /**
- * Group forecast items by department and calculate subtotals
+ * Group vendor items by department
  */
-export function groupByDepartment(items: ForecastItem[]): DepartmentSubtotal[] {
+export function groupByDepartment(items: VendorItem[]): DepartmentGroup[] {
   const grouped = items.reduce((acc, item) => {
     if (!acc[item.department]) {
       acc[item.department] = [];
     }
     acc[item.department].push(item);
     return acc;
-  }, {} as Record<string, ForecastItem[]>);
+  }, {} as Record<string, VendorItem[]>);
   
   return Object.entries(grouped).map(([department, departmentItems]) => {
-    const total = departmentItems.reduce((sum, item) => sum + item.fyTotal, 0);
-    
-    // Calculate monthly totals for the department
-    const monthlyTotals: MonthlyData = {};
-    departmentItems.forEach(item => {
-      Object.entries(item.monthly).forEach(([month, amount]) => {
-        monthlyTotals[month] = (monthlyTotals[month] || 0) + amount;
-      });
-    });
-    
     return {
       department,
       items: departmentItems,
-      total,
-      monthlyTotals
+      count: departmentItems.length
     };
-  }).sort((a, b) => b.total - a.total); // Sort by total descending
-}
-
-/**
- * Get all month keys from the data in chronological order
- */
-export function getMonthKeys(items: ForecastItem[]): string[] {
-  const monthSet = new Set<string>();
-  items.forEach(item => {
-    Object.keys(item.monthly).forEach(month => monthSet.add(month));
-  });
-  
-  return Array.from(monthSet).sort();
-}
-
-/**
- * Get month display name from YYYY-MM format
- */
-export function getMonthDisplayName(monthKey: string): string {
-  const [year, month] = monthKey.split('-');
-  const date = new Date(parseInt(year), parseInt(month) - 1);
-  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }).sort((a, b) => b.count - a.count); // Sort by count descending
 }

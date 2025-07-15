@@ -1,25 +1,16 @@
-export interface MonthlyData {
-  [key: string]: number; // Format: "YYYY-MM": amount
-}
-
-export interface ForecastItem {
+export interface VendorItem {
   id: number;
   source: 'tooling' | 'ps' | 'sm';
   vendor: string;
   properAccount: string;
   department: string;
   subdepartment: string;
-  contractStart: string;
-  contractEnd: string;
-  monthly: MonthlyData;
-  fyTotal: number;
 }
 
-export interface DepartmentSubtotal {
+export interface DepartmentGroup {
   department: string;
-  items: ForecastItem[];
-  total: number;
-  monthlyTotals: MonthlyData;
+  items: VendorItem[];
+  count: number;
 }
 
 export type SourceType = 'tooling' | 'ps' | 'sm';
@@ -32,6 +23,6 @@ export interface FilterState {
 }
 
 export interface SortConfig {
-  key: keyof ForecastItem | 'fyTotal';
+  key: keyof VendorItem;
   direction: 'asc' | 'desc';
 }

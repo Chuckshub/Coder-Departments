@@ -1,0 +1,482 @@
+[
+  {
+    "id": 1,
+    "source": "sm",
+    "vendor": "Cloud Native and Kubernetes MeetUp #1 (JAN 23)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 2,
+    "source": "sm",
+    "vendor": "ETLS with Gene Kim",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 3,
+    "source": "sm",
+    "vendor": "Prodacity (FEB4)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 4,
+    "source": "sm",
+    "vendor": "AFA Warfare Symposium (MAR5)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 5,
+    "source": "sm",
+    "vendor": "SCALE22x + DevOps Days LA (MAR6)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 6,
+    "source": "sm",
+    "vendor": "SUSECON (MAR 10)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 7,
+    "source": "sm",
+    "vendor": "KubeCon EU (APR 1)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 8,
+    "source": "sm",
+    "vendor": "Red Hat Summit (MAY 19)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 9,
+    "source": "sm",
+    "vendor": "AWS re:Invent (DEC 2)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 10,
+    "source": "sm",
+    "vendor": "KubeCon North America (NOV 12)",
+    "properAccount": "67210 - Events & Tradeshows",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 11,
+    "source": "sm",
+    "vendor": "Google Ads",
+    "properAccount": "67250 - Advertising & Paid Media",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 12,
+    "source": "sm",
+    "vendor": "Linkedin Ads",
+    "properAccount": "67250 - Advertising & Paid Media",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 13,
+    "source": "sm",
+    "vendor": "6Sense Display Ads",
+    "properAccount": "67250 - Advertising & Paid Media",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 14,
+    "source": "sm",
+    "vendor": "BrightTALK",
+    "properAccount": "67250 - Advertising & Paid Media",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 15,
+    "source": "sm",
+    "vendor": "TechTarget",
+    "properAccount": "67250 - Advertising & Paid Media",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 16,
+    "source": "sm",
+    "vendor": "O'Reilly",
+    "properAccount": "67220 - Content Marketing & Campaigns",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 17,
+    "source": "sm",
+    "vendor": "IDC Research",
+    "properAccount": "67230 - Market Research",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 18,
+    "source": "sm",
+    "vendor": "Explainify",
+    "properAccount": "67220 - Content Marketing & Campaigns",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 19,
+    "source": "sm",
+    "vendor": "Sendoso, Field Marketing",
+    "properAccount": "67240 - Field Marketing",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 20,
+    "source": "sm",
+    "vendor": "TAC, Holiday Gifts",
+    "properAccount": "67270 - Customer Advocacy",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 21,
+    "source": "ps",
+    "vendor": "Calabrese Consulting LLC",
+    "properAccount": "64061 - Professional Services",
+    "department": "General & Administrative",
+    "subdepartment": "Finance & Accounting"
+  },
+  {
+    "id": 22,
+    "source": "ps",
+    "vendor": "Chameleon Collective, Inc.",
+    "properAccount": "64061 - Professional Services",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 23,
+    "source": "ps",
+    "vendor": "Divflow",
+    "properAccount": "64061 - Professional Services",
+    "department": "Marketing",
+    "subdepartment": "Marketing Operations"
+  },
+  {
+    "id": 24,
+    "source": "ps",
+    "vendor": "Eton Venture Services",
+    "properAccount": "64061 - Professional Services",
+    "department": "General & Administrative",
+    "subdepartment": "Finance & Accounting"
+  },
+  {
+    "id": 25,
+    "source": "ps",
+    "vendor": "FINN ADVISORY",
+    "properAccount": "64061 - Professional Services",
+    "department": "General & Administrative",
+    "subdepartment": "Finance & Accounting"
+  },
+  {
+    "id": 26,
+    "source": "ps",
+    "vendor": "Jessica Lambert LLC",
+    "properAccount": "64061 - Professional Services",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 27,
+    "source": "ps",
+    "vendor": "Jono Bacon Consulting",
+    "properAccount": "64061 - Professional Services",
+    "department": "Marketing",
+    "subdepartment": "Demand Generation"
+  },
+  {
+    "id": 28,
+    "source": "ps",
+    "vendor": "Marcum LLP",
+    "properAccount": "64061 - Professional Services",
+    "department": "General & Administrative",
+    "subdepartment": "Finance & Accounting"
+  },
+  {
+    "id": 29,
+    "source": "ps",
+    "vendor": "Latham Watkins LLP",
+    "properAccount": "64062 - Legal Services",
+    "department": "General & Administrative",
+    "subdepartment": "Finance & Accounting"
+  },
+  {
+    "id": 30,
+    "source": "ps",
+    "vendor": "Simon Willison",
+    "properAccount": "64061 - Professional Services",
+    "department": "Research & Development",
+    "subdepartment": "Enterprise Product"
+  },
+  {
+    "id": 31,
+    "source": "ps",
+    "vendor": "PAN COMMUNICATIONS",
+    "properAccount": "64061 - Professional Services",
+    "department": "Marketing",
+    "subdepartment": "Marketing Operations"
+  },
+  {
+    "id": 32,
+    "source": "ps",
+    "vendor": "The Pipeline Group, Inc.",
+    "properAccount": "64061 - Professional Services",
+    "department": "Revenue",
+    "subdepartment": "Sales"
+  },
+  {
+    "id": 33,
+    "source": "ps",
+    "vendor": "siliconmint",
+    "properAccount": "64061 - Professional Services",
+    "department": "Research & Development",
+    "subdepartment": "Enterprise Engineering"
+  },
+  {
+    "id": 34,
+    "source": "ps",
+    "vendor": "People Function",
+    "properAccount": "64061 - Professional Services",
+    "department": "General & Administrative",
+    "subdepartment": "People"
+  },
+  {
+    "id": 35,
+    "source": "ps",
+    "vendor": "Truno",
+    "properAccount": "64061 - Professional Services",
+    "department": "General & Administrative",
+    "subdepartment": "CEO Office"
+  },
+  {
+    "id": 36,
+    "source": "tooling",
+    "vendor": "1Password",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "IT"
+  },
+  {
+    "id": 37,
+    "source": "tooling",
+    "vendor": "6sense Insights, Inc.",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Marketing",
+    "subdepartment": "Marketing Operations"
+  },
+  {
+    "id": 38,
+    "source": "tooling",
+    "vendor": "Asana",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Marketing",
+    "subdepartment": "Marketing Operations"
+  },
+  {
+    "id": 39,
+    "source": "tooling",
+    "vendor": "Ashby",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "People"
+  },
+  {
+    "id": 40,
+    "source": "tooling",
+    "vendor": "Anthropic - Team Plan",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "IT"
+  },
+  {
+    "id": 41,
+    "source": "tooling",
+    "vendor": "Slack",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "IT"
+  },
+  {
+    "id": 42,
+    "source": "tooling",
+    "vendor": "Github",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Research & Development",
+    "subdepartment": "Enterprise Engineering"
+  },
+  {
+    "id": 43,
+    "source": "tooling",
+    "vendor": "Figma",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Research & Development",
+    "subdepartment": "Enterprise Engineering"
+  },
+  {
+    "id": 44,
+    "source": "tooling",
+    "vendor": "Salesforce.com Inc",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "IT"
+  },
+  {
+    "id": 45,
+    "source": "tooling",
+    "vendor": "Hubspot",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Marketing",
+    "subdepartment": "Marketing Operations"
+  },
+  {
+    "id": 46,
+    "source": "tooling",
+    "vendor": "Datadog",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Research & Development",
+    "subdepartment": "Enterprise Engineering"
+  },
+  {
+    "id": 47,
+    "source": "tooling",
+    "vendor": "OpenAI - Team plan",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "IT"
+  },
+  {
+    "id": 48,
+    "source": "tooling",
+    "vendor": "ZOOM - Workplace",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "IT"
+  },
+  {
+    "id": 49,
+    "source": "tooling",
+    "vendor": "Notion Labs",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "IT"
+  },
+  {
+    "id": 50,
+    "source": "tooling",
+    "vendor": "Linear",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Research & Development",
+    "subdepartment": "Enterprise Product"
+  },
+  {
+    "id": 51,
+    "source": "tooling",
+    "vendor": "Vercel",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Research & Development",
+    "subdepartment": "Enterprise Engineering"
+  },
+  {
+    "id": 52,
+    "source": "tooling",
+    "vendor": "Stripe",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "Finance & Accounting"
+  },
+  {
+    "id": 53,
+    "source": "tooling",
+    "vendor": "Gong",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Revenue",
+    "subdepartment": "Sales Operations"
+  },
+  {
+    "id": 54,
+    "source": "tooling",
+    "vendor": "Outreach",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Revenue",
+    "subdepartment": "Sales Operations"
+  },
+  {
+    "id": 55,
+    "source": "tooling",
+    "vendor": "ZOOMINFO",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Revenue",
+    "subdepartment": "Sales Operations"
+  },
+  {
+    "id": 56,
+    "source": "tooling",
+    "vendor": "Zendesk, Inc.",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "Research & Development",
+    "subdepartment": "Customer Support"
+  },
+  {
+    "id": 57,
+    "source": "tooling",
+    "vendor": "Zapier",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "IT"
+  },
+  {
+    "id": 58,
+    "source": "tooling",
+    "vendor": "Workato, Inc.",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "Finance & Accounting"
+  },
+  {
+    "id": 59,
+    "source": "tooling",
+    "vendor": "Rippling (platform)",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "People"
+  },
+  {
+    "id": 60,
+    "source": "tooling",
+    "vendor": "Ramp (platform)",
+    "properAccount": "63052 - SaaS & Software",
+    "department": "General & Administrative",
+    "subdepartment": "Finance & Accounting"
+  }
+]

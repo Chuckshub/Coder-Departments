@@ -8,13 +8,12 @@ import {
   Chip,
   Divider
 } from "@nextui-org/react";
-import { DepartmentSubtotal, SortConfig, ForecastItem } from "@/types/forecast";
-import { formatCurrency, getMonthKeys, getMonthDisplayName } from "@/lib/utils";
-import { ForecastTable } from "./ForecastTable";
+import { DepartmentGroup, SortConfig, VendorItem } from "@/types/forecast";
+import { VendorTable } from "./VendorTable";
 
 interface DepartmentGroupViewProps {
-  groupedData: DepartmentSubtotal[];
-  onSort: (key: keyof ForecastItem | 'fyTotal') => void;
+  groupedData: DepartmentGroup[];
+  onSort: (key: keyof VendorItem) => void;
   sortConfig: SortConfig;
 }
 
@@ -23,10 +22,6 @@ export function DepartmentGroupView({
   onSort, 
   sortConfig 
 }: DepartmentGroupViewProps) {
-  const allMonthKeys = getMonthKeys(
-    groupedData.flatMap(group => group.items)
-  );
-
   return (
     <div className="space-y-4 bg-white">
       {/* Summary Cards */}
@@ -43,18 +38,18 @@ export function DepartmentGroupView({
         <Card className="bg-white border border-gray-200">
           <CardBody className="text-center">
             <div className="text-2xl font-bold text-green-600">
-              {groupedData.reduce((sum, group) => sum + group.items.length, 0)}
+              {groupedData.reduce((sum, group) => sum + group.count, 0)}
             </div>
-            <div className="text-sm text-black">Total Items</div>
+            <div className="text-sm text-black">Total Vendors</div>
           </CardBody>
         </Card>
         
         <Card className="bg-white border border-gray-200">
           <CardBody className="text-center">
             <div className="text-2xl font-bold text-orange-600">
-              {formatCurrency(groupedData.reduce((sum, group) => sum + group.total, 0))}
+              {new Set(groupedData.flatMap(group => group.items.map(item => item.properAccount))).size}
             </div>
-            <div className="text-sm text-black">Grand Total</div>
+            <div className="text-sm text-black">Unique Accounts</div>
           </CardBody>
         </Card>
       </div>
@@ -72,13 +67,8 @@ export function DepartmentGroupView({
                     {group.department}
                   </Chip>
                   <span className="text-sm text-black">
-                    {group.items.length} items
+                    {group.count} vendors
                   </span>
-                </div>
-                <div className="text-right">
-                  <div className="font-semibold text-lg text-black">
-                    {formatCurrency(group.total)}
-                  </div>
                 </div>
               </div>
             }
@@ -89,21 +79,15 @@ export function DepartmentGroupView({
             }}
           >
             <div className="space-y-4 bg-white">
-              {/* Monthly Breakdown */}
+              {/* Account Summary */}
               <Card className="bg-white border border-gray-200">
                 <CardBody>
-                  <h4 className="font-semibold mb-3 text-black">Monthly Breakdown - {group.department}</h4>
-                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                    {allMonthKeys.map(month => (
-                      <div key={month} className="text-center">
-                        <div className="text-xs text-gray-600 mb-1">
-                          {getMonthDisplayName(month)}
-                        </div>
-                        <div className="font-mono text-sm text-black">
-                          {group.monthlyTotals[month] ? 
-                            formatCurrency(group.monthlyTotals[month]) : 
-                            '-'
-                          }
+                  <h4 className="font-semibold mb-3 text-black">Account Codes - {group.department}</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {Array.from(new Set(group.items.map(item => item.properAccount))).map(account => (
+                      <div key={account} className="text-sm">
+                        <div className="font-mono text-black bg-gray-50 p-2 rounded">
+                          {account}
                         </div>
                       </div>
                     ))}
@@ -114,7 +98,7 @@ export function DepartmentGroupView({
               <Divider className="bg-gray-200" />
               
               {/* Department Items Table */}
-              <ForecastTable
+              <VendorTable
                 data={group.items}
                 onSort={onSort}
                 sortConfig={sortConfig}
