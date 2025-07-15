@@ -28,39 +28,39 @@ export function DepartmentGroupView({
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-white">
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <Card>
+        <Card className="bg-white border border-gray-200">
           <CardBody className="text-center">
-            <div className="text-2xl font-bold text-primary">
+            <div className="text-2xl font-bold text-blue-600">
               {groupedData.length}
             </div>
-            <div className="text-sm text-gray-600">Departments</div>
+            <div className="text-sm text-black">Departments</div>
           </CardBody>
         </Card>
         
-        <Card>
+        <Card className="bg-white border border-gray-200">
           <CardBody className="text-center">
-            <div className="text-2xl font-bold text-success">
+            <div className="text-2xl font-bold text-green-600">
               {groupedData.reduce((sum, group) => sum + group.items.length, 0)}
             </div>
-            <div className="text-sm text-gray-600">Total Items</div>
+            <div className="text-sm text-black">Total Items</div>
           </CardBody>
         </Card>
         
-        <Card>
+        <Card className="bg-white border border-gray-200">
           <CardBody className="text-center">
-            <div className="text-2xl font-bold text-warning">
+            <div className="text-2xl font-bold text-orange-600">
               {formatCurrency(groupedData.reduce((sum, group) => sum + group.total, 0))}
             </div>
-            <div className="text-sm text-gray-600">Grand Total</div>
+            <div className="text-sm text-black">Grand Total</div>
           </CardBody>
         </Card>
       </div>
 
       {/* Department Groups */}
-      <Accordion variant="splitted" selectionMode="multiple">
+      <Accordion variant="splitted" selectionMode="multiple" className="bg-white">
         {groupedData.map((group) => (
           <AccordionItem
             key={group.department}
@@ -68,34 +68,38 @@ export function DepartmentGroupView({
             title={
               <div className="flex justify-between items-center w-full pr-4">
                 <div className="flex items-center gap-3">
-                  <Chip color="primary" variant="flat">
+                  <Chip color="primary" variant="flat" className="text-black">
                     {group.department}
                   </Chip>
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-black">
                     {group.items.length} items
                   </span>
                 </div>
                 <div className="text-right">
-                  <div className="font-semibold text-lg">
+                  <div className="font-semibold text-lg text-black">
                     {formatCurrency(group.total)}
                   </div>
                 </div>
               </div>
             }
-            className="mb-2"
+            className="mb-2 bg-white border border-gray-200"
+            classNames={{
+              content: "bg-white",
+              title: "text-black"
+            }}
           >
-            <div className="space-y-4">
+            <div className="space-y-4 bg-white">
               {/* Monthly Breakdown */}
-              <Card>
+              <Card className="bg-white border border-gray-200">
                 <CardBody>
-                  <h4 className="font-semibold mb-3">Monthly Breakdown - {group.department}</h4>
+                  <h4 className="font-semibold mb-3 text-black">Monthly Breakdown - {group.department}</h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
                     {allMonthKeys.map(month => (
                       <div key={month} className="text-center">
-                        <div className="text-xs text-gray-500 mb-1">
+                        <div className="text-xs text-gray-600 mb-1">
                           {getMonthDisplayName(month)}
                         </div>
-                        <div className="font-mono text-sm">
+                        <div className="font-mono text-sm text-black">
                           {group.monthlyTotals[month] ? 
                             formatCurrency(group.monthlyTotals[month]) : 
                             '-'
@@ -107,7 +111,7 @@ export function DepartmentGroupView({
                 </CardBody>
               </Card>
               
-              <Divider />
+              <Divider className="bg-gray-200" />
               
               {/* Department Items Table */}
               <ForecastTable

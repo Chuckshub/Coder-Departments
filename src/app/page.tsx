@@ -43,7 +43,7 @@ export default function Home() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch('/data/forecast.json');
+        const response = await fetch('/forecast.json');
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {
@@ -97,7 +97,7 @@ export default function Home() {
 
   const getTabLabel = (source: SourceType) => {
     switch (source) {
-      case 'tooling': return 'Tooling';
+      case 'tooling': return 'SaaS & Software';
       case 'ps': return 'Professional Services';
       case 'sm': return 'Sales & Marketing';
       default: return source;
@@ -106,7 +106,7 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="container mx-auto p-6 space-y-6">
+      <div className="container mx-auto p-6 space-y-6 bg-white min-h-screen">
         <Skeleton className="h-12 w-full rounded-lg" />
         <div className="flex gap-4">
           <Skeleton className="h-10 w-64 rounded-lg" />
@@ -120,131 +120,152 @@ export default function Home() {
   }
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
-      {/* Header */}
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900">
-          FP&A Department Forecast Tool
-        </h1>
-        <p className="text-gray-600">
-          Vendor and account forecasting for AP teams
-        </p>
-      </div>
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto p-6 space-y-6">
+        {/* Header */}
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-bold text-black">
+            FP&A Department Forecast Tool
+          </h1>
+          <p className="text-black">
+            Vendor and account forecasting for AP teams
+          </p>
+        </div>
 
-      {/* Search and Filters */}
-      <Card>
-        <CardBody className="space-y-4">
-          <div className="flex flex-col lg:flex-row gap-4">
-            <Input
-              placeholder="Search vendors, accounts, departments..."
-              value={filters.search}
-              onValueChange={(value) => handleFilterChange('search', value)}
-              startContent={<SearchIcon className="text-gray-400" />}
-              className="flex-1"
-              isClearable
+        {/* Search and Filters */}
+        <Card className="bg-white border border-gray-200">
+          <CardBody className="space-y-4">
+            <div className="flex flex-col lg:flex-row gap-4">
+              <Input
+                placeholder="Search vendors, accounts, departments..."
+                value={filters.search}
+                onValueChange={(value) => handleFilterChange('search', value)}
+                startContent={<SearchIcon className="text-black" />}
+                className="flex-1"
+                classNames={{
+                  input: "text-black",
+                  inputWrapper: "bg-white border border-gray-300"
+                }}
+                isClearable
+              />
+              
+              <div className="flex gap-2">
+                <Select
+                  placeholder="Department"
+                  selectedKeys={filters.department ? [filters.department] : []}
+                  onSelectionChange={(keys) => {
+                    const value = Array.from(keys)[0] as string || '';
+                    handleFilterChange('department', value);
+                  }}
+                  className="w-48"
+                  classNames={{
+                    trigger: "bg-white border border-gray-300 text-black",
+                    value: "text-black"
+                  }}
+                >
+                  {uniqueDepartments.map((dept) => (
+                    <SelectItem key={dept} value={dept} className="text-black">
+                      {dept}
+                    </SelectItem>
+                  ))}
+                </Select>
+                
+                <Select
+                  placeholder="Account"
+                  selectedKeys={filters.account ? [filters.account] : []}
+                  onSelectionChange={(keys) => {
+                    const value = Array.from(keys)[0] as string || '';
+                    handleFilterChange('account', value);
+                  }}
+                  className="w-64"
+                  classNames={{
+                    trigger: "bg-white border border-gray-300 text-black",
+                    value: "text-black"
+                  }}
+                >
+                  {uniqueAccounts.map((account) => (
+                    <SelectItem key={account} value={account} className="text-black">
+                      {account}
+                    </SelectItem>
+                  ))}
+                </Select>
+                
+                <Select
+                  placeholder="Subdepartment"
+                  selectedKeys={filters.subdepartment ? [filters.subdepartment] : []}
+                  onSelectionChange={(keys) => {
+                    const value = Array.from(keys)[0] as string || '';
+                    handleFilterChange('subdepartment', value);
+                  }}
+                  className="w-48"
+                  classNames={{
+                    trigger: "bg-white border border-gray-300 text-black",
+                    value: "text-black"
+                  }}
+                >
+                  {uniqueSubdepartments.map((subdept) => (
+                    <SelectItem key={subdept} value={subdept} className="text-black">
+                      {subdept}
+                    </SelectItem>
+                  ))}
+                </Select>
+              </div>
+            </div>
+            
+            <div className="flex justify-between items-center">
+              <Switch
+                isSelected={groupByDept}
+                onValueChange={setGroupByDept}
+                size="sm"
+                classNames={{
+                  label: "text-black"
+                }}
+              >
+                <span className="text-black">Group by Department</span>
+              </Switch>
+              
+              <div className="text-sm text-black">
+                {filteredData.length} items found
+              </div>
+            </div>
+          </CardBody>
+        </Card>
+
+        {/* Tabs */}
+        <div className="sticky top-0 z-10 bg-white border-b border-gray-200 pb-2">
+          <Tabs
+            selectedKey={activeTab}
+            onSelectionChange={(key) => setActiveTab(key as SourceType)}
+            variant="underlined"
+            classNames={{
+              tabList: "gap-6 w-full relative rounded-none p-0",
+              cursor: "w-full bg-blue-600",
+              tab: "max-w-fit px-0 h-12",
+              tabContent: "group-data-[selected=true]:text-blue-600 text-black"
+            }}
+          >
+            <Tab key="tooling" title={<span className="text-black">{getTabLabel("tooling")}</span>} />
+            <Tab key="ps" title={<span className="text-black">{getTabLabel("ps")}</span>} />
+            <Tab key="sm" title={<span className="text-black">{getTabLabel("sm")}</span>} />
+          </Tabs>
+        </div>
+
+        {/* Table Content */}
+        <div className="space-y-6">
+          {groupByDept ? (
+            <DepartmentGroupView
+              groupedData={groupedData}
+              onSort={handleSort}
+              sortConfig={sortConfig}
             />
-            
-            <div className="flex gap-2">
-              <Select
-                placeholder="Department"
-                selectedKeys={filters.department ? [filters.department] : []}
-                onSelectionChange={(keys) => {
-                  const value = Array.from(keys)[0] as string || '';
-                  handleFilterChange('department', value);
-                }}
-                className="w-48"
-              >
-                {uniqueDepartments.map((dept) => (
-                  <SelectItem key={dept} value={dept}>
-                    {dept}
-                  </SelectItem>
-                ))}
-              </Select>
-              
-              <Select
-                placeholder="Account"
-                selectedKeys={filters.account ? [filters.account] : []}
-                onSelectionChange={(keys) => {
-                  const value = Array.from(keys)[0] as string || '';
-                  handleFilterChange('account', value);
-                }}
-                className="w-64"
-              >
-                {uniqueAccounts.map((account) => (
-                  <SelectItem key={account} value={account}>
-                    {account}
-                  </SelectItem>
-                ))}
-              </Select>
-              
-              <Select
-                placeholder="Subdepartment"
-                selectedKeys={filters.subdepartment ? [filters.subdepartment] : []}
-                onSelectionChange={(keys) => {
-                  const value = Array.from(keys)[0] as string || '';
-                  handleFilterChange('subdepartment', value);
-                }}
-                className="w-48"
-              >
-                {uniqueSubdepartments.map((subdept) => (
-                  <SelectItem key={subdept} value={subdept}>
-                    {subdept}
-                  </SelectItem>
-                ))}
-              </Select>
-            </div>
-          </div>
-          
-          <div className="flex justify-between items-center">
-            <Switch
-              isSelected={groupByDept}
-              onValueChange={setGroupByDept}
-              size="sm"
-            >
-              Group by Department
-            </Switch>
-            
-            <div className="text-sm text-gray-600">
-              {filteredData.length} items found
-            </div>
-          </div>
-        </CardBody>
-      </Card>
-
-      {/* Tabs */}
-      <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b">
-        <Tabs
-          selectedKey={activeTab}
-          onSelectionChange={(key) => setActiveTab(key as SourceType)}
-          variant="underlined"
-          classNames={{
-            tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
-            cursor: "w-full bg-primary",
-            tab: "max-w-fit px-0 h-12",
-            tabContent: "group-data-[selected=true]:text-primary"
-          }}
-        >
-          <Tab key="tooling" title={getTabLabel("tooling")} />
-          <Tab key="ps" title={getTabLabel("ps")} />
-          <Tab key="sm" title={getTabLabel("sm")} />
-        </Tabs>
-      </div>
-
-      {/* Table Content */}
-      <div className="space-y-6">
-        {groupByDept ? (
-          <DepartmentGroupView
-            groupedData={groupedData}
-            onSort={handleSort}
-            sortConfig={sortConfig}
-          />
-        ) : (
-          <ForecastTable
-            data={filteredData}
-            onSort={handleSort}
-            sortConfig={sortConfig}
-          />
-        )}
+          ) : (
+            <ForecastTable
+              data={filteredData}
+              onSort={handleSort}
+              sortConfig={sortConfig}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

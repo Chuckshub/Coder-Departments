@@ -4,13 +4,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #000000;
   }
 }
 
@@ -24,4 +24,43 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Force white background and black text */
+* {
+  color: #000000 !important;
+}
+
+body, html {
+  background-color: #ffffff !important;
+}
+
+/* Override NextUI default colors */
+.nextui-table-wrapper,
+.nextui-card,
+.nextui-input-wrapper,
+.nextui-select-wrapper {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Ensure table headers are readable */
+th {
+  background-color: #f8f9fa !important;
+  color: #000000 !important;
+}
+
+/* Ensure input text is black */
+input, textarea, select {
+  color: #000000 !important;
+}
+
+/* Ensure button text is readable */
+button {
+  color: #000000 !important;
+}
+
+/* Ensure chip text is readable */
+.nextui-chip {
+  color: #000000 !important;
 }
